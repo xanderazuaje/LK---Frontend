@@ -1,0 +1,40 @@
+<div id="three_component" class="w-full aspect-square absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"></div>
+
+<script>
+  import * as THREE from 'three';
+
+  const domElement = document.getElementById('three_component');
+  const h = domElement.offsetHeight;
+  const w = domElement.offsetWidth;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
+  camera.position.z = 10;
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(w, h);
+  renderer.setClearColor(0x000000, 0);
+  domElement.appendChild(renderer.domElement);
+
+  const geometry = new THREE.SphereGeometry(5, 25, 25);
+  const edges = new THREE.EdgesGeometry(geometry);
+  const material = new THREE.LineBasicMaterial({
+    color: 0xffffff,
+  })
+  const line = new THREE.LineSegments(
+    edges,
+    material
+  );
+    scene.add(line);
+
+  function animate() {
+    requestAnimationFrame(animate);
+    line.rotation.y += 0.001;
+    line.rotation.z += 0.001;
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>

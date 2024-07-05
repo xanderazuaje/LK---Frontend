@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+</head>
+<body>
+  <slot/>
+</body>
+</html>
+
+<style is:global>
+    @font-face {
+        font-family: 'new-browserlink';
+        src: url('/fonts/new_browserlink.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'W95FA';
+        src: url('/fonts/w95fa.woff2') format('woff2');
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'new-browserlink', sans-serif;
+    }
+    body {
+        background-color: black;
+    }
+</style>
